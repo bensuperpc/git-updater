@@ -19,7 +19,6 @@ import os.path
 from pathlib import Path
 import sys
 import platform
-import json
 
 
 # Change to pull if you want merge local and remote
@@ -96,7 +95,7 @@ class git:
                 os.system('git clone -v ' + repository)
                 print("Cloning OK")
                 
-				# Change default directory
+                # Change default directory
                 os.chdir(directory)
 
                 print('Init :' + directory)
@@ -111,6 +110,7 @@ class git:
                 os.system('git submodule update --init --recursive --remote')
                 os.system('git submodule update --recursive --remote')
                 print('Submodule : OK')
+                os.system('git fsck --full')
 
                 #print('Check git integrity : ...')
                 #os.system('git reflog expire --expire=now --all')
@@ -147,6 +147,8 @@ class git:
                         'git submodule update --init --recursive --remote')
                     os.system('git submodule update --recursive --remote')
                     print('Submodule : OK')
+                    # print('Check git integrity : ...')
+                    os.system('git fsck --full')
 
                     # print('Check git integrity : ...')
                     # os.system('git reflog expire --expire=now --all')
@@ -175,6 +177,7 @@ class git:
                         'git submodule update --init --recursive --remote')
                     os.system('git submodule update --recursive --remote')
                     print('Submodule : OK')
+                    os.system('git fsck --full')
 
                     #print('Check git integrity : ...')
                     #os.system('git reflog expire --expire=now --all')
@@ -197,7 +200,7 @@ if __name__ == '__main__':
     objName = git()
     print("Lib Version : " + objName.class_version())
     repositorylist = ['https://github.com/dolphin-emu/dolphin.git',
-                      # 'git://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/disco',
+                      'git://git.launchpad.net/~ubuntu-kernel/ubuntu/+source/linux/+git/disco',
                       'https://github.com/Bensuperpc/Journal_lumineux.git',
                       'https://github.com/videolan/vlc.git',
                       'https://github.com/kornelski/7z.git',
@@ -205,6 +208,7 @@ if __name__ == '__main__':
                       'https://github.com/FFmpeg/FFmpeg.git',
                       'https://github.com/Microsoft/vscode.git',
                       'https://github.com/Microsoft/vscode-cpptools.git',
+                      'https://github.com/microsoft/vscode-python.git',
                       'https://github.com/HandBrake/HandBrake.git',
                       'https://github.com/snes9xgit/snes9x.git',
                       'https://github.com/torvalds/linux.git',
@@ -216,10 +220,61 @@ if __name__ == '__main__':
                       'https://github.com/KiCad/kicad-packages3D.git',
                       'https://github.com/FreeCAD/FreeCAD.git',
                       'https://github.com/FreeCAD/FreeCAD-addons.git',
-					  'https://github.com/tensorflow/tensorflow.git',
-					  'https://github.com/pmmp/PocketMine-MP.git',
-					  'https://github.com/ShareX/ShareX.git',
-                      'https://github.com/EpicGames/UnrealEngine.git', ]
+                      'https://github.com/tensorflow/tensorflow.git',
+                      'https://github.com/pmmp/PocketMine-MP.git',
+                      'https://github.com/ShareX/ShareX.git',
+                      'https://github.com/ekke/c2gQtWS_x.git',
+                      'https://github.com/ekke/c2gQtCon_x.git',
+                      'https://github.com/ekke/stacked_pages_x.git',
+                      'https://github.com/ekke/swiped_pages_x.git',
+                      'https://github.com/ekke/tab_pages_x.git',
+                      'https://github.com/ekke/one_page_x.git',
+                      'https://github.com/ekke/drawer_nav_x.git',
+                      'https://github.com/ekke/statusbar.git',
+                      'https://github.com/ekke/ekkesSHAREexample.git',
+                      'https://github.com/ekke/ekkesBTLEexample.git',
+                      'https://github.com/ekke/android-openssl-qt.git',
+                      'https://github.com/KDAB/android_openssl.git',
+                      'https://github.com/arduino/Arduino.git',
+                      'https://github.com/arduino/arduino-builder.git',
+                      'https://github.com/arduino/arduino-create-agent.git',
+                      'https://github.com/arduino/ArduinoCore-avr.git',
+                      'https://github.com/chromium/chromium.git',
+                      'https://github.com/systemd/systemd.git',
+                      'https://github.com/coreos/grub.git',
+                      'https://github.com/llvm-mirror/clang.git',
+                      'https://github.com/gcc-mirror/gcc.git',
+                      'https://github.com/llvm-mirror/llvm.git',
+                      'https://github.com/llvm-mirror/libcxx.git',
+                      'https://github.com/llvm-mirror/compiler-rt.git',
+                      'https://github.com/llvm-mirror/lldb.git',
+                      'https://github.com/llvm-mirror/lld.git',
+                      'https://github.com/llvm-mirror/clang-tools-extra.git',
+                      'https://github.com/KDE/krita.git',
+                      'https://github.com/qt/qt5.git',
+                      'https://android.googlesource.com/platform/sdk',
+                      'https://android.googlesource.com/platform/ndk',
+                      'https://github.com/tensorflow/tensorflow.git',
+                      'https://github.com/tensorflow/docs.git',
+                      'https://github.com/tensorflow/community.git',
+                      'https://github.com/tensorflow/addons.git',
+                      #'https://github.com/Felgo/TensorFlowQtVPlay.git',
+                      'https://github.com/pytorch/pytorch.git',
+                      'https://github.com/pytorch/examples.git',
+                      'https://github.com/python/cpython.git',
+                      'https://github.com/minetest/minetest.git',
+                      'https://github.com/hrydgard/ppsspp.git',
+                      'https://github.com/TheAlgorithms/C-Plus-Plus.git',
+                      'https://github.com/Mooophy/Cpp-Primer.git',
+                      'https://github.com/bitcoin/bitcoin.git',
+                      'https://github.com/ethereum/aleth.git',
+                      'https://github.com/ethereum/evmone.git',
+                      'https://github.com/ethereum/EIPs.git',
+                      'https://github.com/ethereum/trinity.git',
+                      'https://github.com/ethereum/solidity.git',
+                      'https://github.com/ethereum/hive.git',
+                      'https://github.com/ethereum/vyper.git',
+                      'https://github.com/EpicGames/UnrealEngine.git',]
 
     # Get current path of this script
     maindirectory = os.path.dirname(os.path.realpath(__file__))
