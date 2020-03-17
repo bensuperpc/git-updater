@@ -1,0 +1,3 @@
+https://github.com/Bensuperpc/Journal_lumineux.git 
+https://github.com/Bensuperpc/DelayTime.git
+https://github.com/dolphin-emu/dolphin.git
