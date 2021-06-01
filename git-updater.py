@@ -1,16 +1,16 @@
 #
 #
-# git.py - for git clone and pull in local
+# git-updater.py - for git clone and pull in local
 #
-# Created by Benoît(Bensuperpc@gmail.com) 07th may 2019
-# Updated by Benoît(Bensuperpc@gmail.com) 17 th March 2020
+# Created by Bensuperpc(Bensuperpc@gmail.com) 07 may 2019
+# Updated by Bensuperpc(Bensuperpc@gmail.com) 01 June 2021
 # 
 #
 # Released into the Public domain with MIT licence
 # https://opensource.org/licenses/MIT
 #
 # Written with Sublime text 3 and python 3.7.3
-# Updated with Visual Studio code 1.42.1 and python 3.8.2
+# Updated with Visual Studio code 1.55.2 and python 3.9.5
 # Script compatibility : Windows, Linux, Mac
 # Script requirement : python 3.5 and above, git 2.2X
 #
@@ -25,10 +25,7 @@ def get_repo_name(repo_url):
     return repo_url
 
 
-def git_update(repos_directory, list_of_repos):
-    print('maindirectory :' + repos_directory)
-    print('thelist :', list_of_repos)
-
+def git_update(list_of_repos):
     for repos in list_of_repos:
         file_name = get_repo_name(repos)
         #os.system('git fsck --full')
@@ -53,5 +50,4 @@ if __name__ == '__main__':
     repositorylist = [x.strip() for x in repositorylist]
 
     # Get current path of this script
-    maindirectory = os.path.dirname(os.path.realpath(__file__))
-    git_update(maindirectory, repositorylist)
+    git_update(repositorylist)
