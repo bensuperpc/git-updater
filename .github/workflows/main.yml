@@ -1,4 +1,4 @@
-name: docker-ndless
+name: dgit-updater
 
 on:
   push:
@@ -17,7 +17,7 @@ on:
 
 jobs:
   image:
-    name: docker-ndless
+    name: git-updater
     runs-on: ubuntu-20.04
     steps:
       - name: "📥 Checkout Code"
